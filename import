@@ -1,0 +1,28 @@
+import turtle
+
+def draw_fractal(t, order, size):
+    if order == 0:
+        t.forward(size)
+    else:
+        for angle in [60, -120, 60, 0]:
+            draw_fractal(t, order - 1, size / 3)
+            t.left(angle)
+
+def main():
+    screen = turtle.Screen()
+    screen.bgcolor("white")
+
+    fractal_turtle = turtle.Turtle()
+    fractal_turtle.color("blue")
+    fractal_turtle.pensize(2)
+
+    fractal_turtle.penup()
+    fractal_turtle.goto(-150, -150)
+    fractal_turtle.pendown()
+
+    draw_fractal(fractal_turtle, 4, 300)
+
+    screen.mainloop()
+
+if __name__ == "__main__":
+    main()
